@@ -42,7 +42,7 @@
                             {{-- <i class="right fas fa-angle-left"></i> --}}
                         </p>
                     </a>
-                    {{-- <ul class="nav nav-treeview"> 
+                    {{-- <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="../../index.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/pengalamankuliah" class="nav-link">
+                    <a href="{{ url('/pengalamankuliah')}}" class="nav-link">
                         <i class="nav-icon fas fa-pen-fancy"></i>
                         <p>
                             Pengalaman Kuliah
@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/hobbies" class="nav-link">
+                    <a href="{{ url('/hobbies')}}" class="nav-link">
                         <i class="nav-icon fas fa-star"></i>
                         <p>
                             Hobi
@@ -89,17 +89,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/families" class="nav-link">
+                    <a href="{{ url('/families')}}" class="nav-link">
                         <i class="nav-icon fas fa-house-user"></i>
                         <p>
                             Keluarga
                         </p>
                     </a>
                     <li class="nav-item">
-                        <a href="/courses" class="nav-link">
+                        <a href="{{ url('/course')}}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Mata Kuliah
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/mahasiswa')}}" class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Mahasiswa
                             </p>
                         </a>
                     </li>

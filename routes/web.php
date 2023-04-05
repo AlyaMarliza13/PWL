@@ -9,6 +9,7 @@ use App\Http\Controllers\FamiliesController;
 use App\Http\Controllers\HobbiesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilController;
@@ -66,10 +67,12 @@ Route::get('Logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function() {
 
     Route::get('/profil', [ProfilController::class, 'profil']);
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [ProfilController::class, 'profil']);
     Route::get('/profil', [ProfilController::class, 'profil']);
     Route::get('/pengalamankuliah', [KuliahController::class, 'kuliah']);
     Route::get("/hobbies", [HobbiesController::class, "index"]);
     Route::get("/families", [FamiliesController::class, "index"]);
     Route::get("/courses", [CoursesController::class, "index"]);
+
+    Route::resource('/mahasiswa', MahasiswaController::class);
 });
