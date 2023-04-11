@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id('id_matkul');
+            $table->id();
             $table->string('nama_mata_kuliah', 50);
             $table->string('dosen_pengampu', 50);
             $table->integer('jumlah_sks', false);
             $table->integer('semester', false);
+            $table->timestamps();
         });
     }
 

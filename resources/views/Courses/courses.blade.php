@@ -38,39 +38,32 @@
             </div>
             <div class="card-body">
 
-                <a href="{{url('mahasiswa/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                <a href="{{url('courses/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
 
                 <table class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIM</th>
-                      <th>Nama</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
-                      <th>Alamat</th>
-                      <th>HP</th>
-                      <th>Action</th>
+                      <th>Nama Mata Kuliah</th>
+                      <th>Dosen Pengampu</th>
+                      <th>Jumlah SKS</th>
+                      <th>Semester</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if($mhs->count() > 0)
-                      @foreach($mhs as $i => $m)
+                    @if($courses->count() > 0)
+                      @foreach($courses as $i => $c)
                         <tr>
                           <td>{{++$i}}</td>
-                          <td>{{$m->nim}}</td>
-                          <td>{{$m->nama}}</td>
-                          <td>{{$m->jk}}</td>
-                          <td>{{$m->tempat_lahir}}</td>
-                          <td>{{$m->tanggal_lahir}}</td>
-                          <td>{{$m->alamat}}</td>
-                          <td>{{$m->hp}}</td>
+                          <td>{{$c->nama_mata_kuliah}}</td>
+                          <td>{{$c->dosen_pengampu}}</td>
+                          <td>{{$c->jumlah_sks}}</td>
+                          <td>{{$c->semester}}</td>
                           <td>
                             <!-- Bikin tombol edit dan delete -->
-                            <a href="{{ url('/mahasiswa/'. $m->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
+                            <a href="{{ url('/courses/'. $c->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
 
-                            <form method="POST" action="{{ url('/mahasiswa/'.$m->id) }}" >
+                            <form method="POST" action="{{ url('/courses/'.$c->id) }}" >
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-sm btn-danger">hapus</button>
@@ -99,14 +92,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($hobbies as $no => $h)
+                        @foreach($cobbies as $no => $c)
                             <tr class="">
                                 <td>{{$no}}</td>
-                                <td>{{$h->nama}}</td>
-                                <td>{{$h->umur}}</td>
-                                <td>{{$h->jenis_kelamin}}</td>
-                                <td>{{$h->hobi}}</td>
-                                <td>{{$h->kategori}}</td>
+                                <td>{{$c->nama}}</td>
+                                <td>{{$c->umur}}</td>
+                                <td>{{$c->jenis_kelamin}}</td>
+                                <td>{{$c->hobi}}</td>
+                                <td>{{$c->kategori}}</td>
                             </tr>
                         @endforeach
                     </tbody>

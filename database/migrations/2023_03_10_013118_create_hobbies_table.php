@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('hobbies', function (Blueprint $table) {
-            $table->id('id_hobi');
+            $table->id();
             $table->string('nama', 50);
             $table->integer('umur', false);
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('hobi', 50);
             $table->enum('kategori', ['kesenian', 'olahraga', 'fashion']);
+            $table->timestamps();
         });
     }
 

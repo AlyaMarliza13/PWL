@@ -70,9 +70,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/', [ProfilController::class, 'profil']);
     Route::get('/profil', [ProfilController::class, 'profil']);
     Route::get('/pengalamankuliah', [KuliahController::class, 'kuliah']);
-    Route::get("/hobbies", [HobbiesController::class, "index"]);
-    Route::get("/families", [FamiliesController::class, "index"]);
-    Route::get("/courses", [CoursesController::class, "index"]);
-
+    Route::resource('/hobbies', HobbiesController::class);
+    Route::resource('/families', FamiliesController::class);
+    Route::resource('/courses', CoursesController::class);
     Route::resource('/mahasiswa', MahasiswaController::class);
 });

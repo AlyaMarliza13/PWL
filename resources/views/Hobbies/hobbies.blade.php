@@ -38,39 +38,34 @@
             </div>
             <div class="card-body">
 
-                <a href="{{url('mahasiswa/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                <a href="{{url('hobbies/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
 
                 <table class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIM</th>
                       <th>Nama</th>
+                      <th>Umur</th>
                       <th>Jenis Kelamin</th>
-                      <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
-                      <th>Alamat</th>
-                      <th>HP</th>
-                      <th>Action</th>
+                      <th>Hobi</th>
+                      <th>Kategori</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if($mhs->count() > 0)
-                      @foreach($mhs as $i => $m)
+                    @if($hobbies->count() > 0)
+                      @foreach($hobbies as $i => $h)
                         <tr>
                           <td>{{++$i}}</td>
-                          <td>{{$m->nim}}</td>
-                          <td>{{$m->nama}}</td>
-                          <td>{{$m->jk}}</td>
-                          <td>{{$m->tempat_lahir}}</td>
-                          <td>{{$m->tanggal_lahir}}</td>
-                          <td>{{$m->alamat}}</td>
-                          <td>{{$m->hp}}</td>
+                          <td>{{$h->nama}}</td>
+                          <td>{{$h->umur}}</td>
+                          <td>{{$h->jenis_kelamin}}</td>
+                          <td>{{$h->hobi}}</td>
+                          <td>{{$h->kategori}}</td>
                           <td>
                             <!-- Bikin tombol edit dan delete -->
-                            <a href="{{ url('/mahasiswa/'. $m->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
+                            <a href="{{ url('/hobbies/'. $h->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
 
-                            <form method="POST" action="{{ url('/mahasiswa/'.$m->id) }}" >
+                            <form method="POST" action="{{ url('/hobbies/'.$h->id) }}" >
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-sm btn-danger">hapus</button>

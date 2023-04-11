@@ -25,7 +25,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tabel Mahasiswa</h3>
+                <h3 class="card-title">Tabel Hobi Mahasiswa</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -39,58 +39,44 @@
             <div class="card-body">
                 <form method="POST" action="{{ $url_form}}">
                 @csrf
-                {!! (isset($mhs))? method_field('PUT') : '' !!}
+                {!! (isset($hobbies))? method_field('PUT') : '' !!}
 
                 <div class="form-group">
-                    <label>Nim</label>
-                    <input class="form-control @error('nim') is-invalid @enderror" value="{{isset($mhs)? $mhs->nim : old('nim') }}" name="nim" type="text" />
-                    @error('nim')
+                    <label>Nama</label>
+                    <input class="form-control @error('nama') is-invalid @enderror" value="{{isset($hobbies)? $hobbies->nama : old('nama') }}" name="nama" type="text" />
+                    @error('nama')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Nama</label>
-                    <input class="form-control @error('nama') is-invalid @enderror" value="{{isset($mhs)? $mhs->nama : old('nama') }}" name="nama" type="text" />
-                    @error('name')
+                    <label>Umur</label>
+                    <input class="form-control @error('umur') is-invalid @enderror" value="{{isset($hobbies)? $hobbies->umur : old('umur') }}" name="umur" type="text" />
+                    @error('umur')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Jenis Kelamin</label><br>
-                    <label><input type="radio" name="jk" value="l" {{isset($mhs) && $mhs->jk == "l" ? "checked" : ""}}>Laki-laki</label><br>
-                    <label><input type="radio" name="jk" value="p" {{isset($mhs) && $mhs->jk == "p" ? "checked" : ""}}>Perempuan</label><br>
-                     @error('jk')
-                        <span class="error invalid-feedback">{{ $message}} </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>Tempat Lahir</label>
-                    <input class="form-control @error('tempat_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tempat_lahir : old('tempat_lahir') }}" name="tempat_lahir" type="text" />
-                    @error('tempat_lahir')
+                    <label><input type="radio" name="jenis_kelamin" value="Laki-laki" {{isset($mhs) && $mhs->jenis_kelamin == "Laki-laki" ? "checked" : ""}}>Laki-laki</label><br>
+                    <label><input type="radio" name="jenis_kelamin" value="Perempuan" {{isset($mhs) && $mhs->jenis_kelamin == "Perempuan" ? "checked" : ""}}>Perempuan</label><br>
+                     @error('jenis_kelamin')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tanggal_lahir: old('tanggal_lahir') }}" name="tanggal_lahir" type="text" />
-                    @error('tanggal_lahir')
+                    <label>Hobi</label>
+                    <input class="form-control @error('hobi') is-invalid @enderror" value="{{isset($hobbies)? $hobbies->hobi : old('hobi') }}" name="hobi" type="text" />
+                    @error('hobi')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
-                </div>  <div class="form-group">
-                    <label>Alamat</label>
-                    <input class="form-control @error('alamat') is-invalid @enderror" value="{{isset($mhs)? $mhs->alamat : old('alamat') }}" name="alamat" type="text" />
-                    @error('alamat')
-                        <span class="error invalid-feedback">{{ $message}} </span>
-                        @enderror
-              </div>
+                </div>
                 <div class="form-group">
-                    <label>HP</label>
-                    <input class="form-control @error('hp') is-invalid @enderror" value="{{isset($mhs)? $mhs->hp : old('hp') }}" name="hp" type="text" />
-                    @error('hp')
+                    <label>Kategori</label>
+                    <input class="form-control @error('kategori') is-invalid @enderror" value="{{isset($hobbies)? $hobbies->kategori: old('kategori') }}" name="kategori" type="text" />
+                    @error('kategori')
                         <span class="error invalid-feedback">{{ $message}} </span>
-                        @enderror
-              </div>
+                    @enderror
+                </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
               <!-- /.card-body -->
             {{-- <div class="card-body">
