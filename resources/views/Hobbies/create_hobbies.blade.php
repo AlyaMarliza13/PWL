@@ -57,8 +57,8 @@
                 </div>
                 <div class="form-group">
                     <label>Jenis Kelamin</label><br>
-                    <label><input type="radio" name="jenis_kelamin" value="Laki-laki" {{isset($mhs) && $mhs->jenis_kelamin == "Laki-laki" ? "checked" : ""}}>Laki-laki</label><br>
-                    <label><input type="radio" name="jenis_kelamin" value="Perempuan" {{isset($mhs) && $mhs->jenis_kelamin == "Perempuan" ? "checked" : ""}}>Perempuan</label><br>
+                    <label><input type="radio" name="jenis_kelamin" value="Laki-laki" {{isset($hobbies) && $mhs->jenis_kelamin == "Laki-laki" ? "checked" : ""}}>Laki-laki</label><br>
+                    <label><input type="radio" name="jenis_kelamin" value="Perempuan" {{isset($hobbies) && $mhs->jenis_kelamin == "Perempuan" ? "checked" : ""}}>Perempuan</label><br>
                      @error('jenis_kelamin')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
