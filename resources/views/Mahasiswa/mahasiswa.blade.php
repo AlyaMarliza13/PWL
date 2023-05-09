@@ -71,6 +71,7 @@
                             <td class="d-flex">
                               <a href="{{ url('/mahasiswa/'. $m->id.'/edit') }}" class="btn btn-sm btn-warning mr-2">Edit</a>
                               <a href="{{ url('/mahasiswa/'. $m->id) }}" class="btn btn-sm btn-info mr-2">Detail</a>
+                              <a href="{{ url('/nilai/'. $m->id) }}" class="btn btn-sm btn-success mr-2">Nilai</a>
                               <form method="POST" action="{{ url('/mahasiswa/'.$m->id) }}" >
                                   @csrf
                                   @method('DELETE')

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class courses extends Model
+class MataKuliah extends Model
 {
     use HasFactory;
-    protected $table = 'courses';
-    //protected $primaryKey = 'id';
+    protected $table = 'matakuliah';
+    // protected $primaryKey = 'id';
     //protected $keyType = 'int';
     protected $fillable = [
-        'nama_mata_kuliah',
-        'dosen_pengampu',
-        'jumlah_sks',
+        'nama_matkul',
+        'sks',
+        'jam',
         'semester',
     ];
     public function mahasiswa_matakuliah()
