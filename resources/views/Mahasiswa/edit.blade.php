@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dashboard</h1>
+                    <h1>Edit Data Mahasiswa</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,8 +25,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tabel Mahasiswa</h3>
-
+                <h3 class="card-title">Data Mahasiswa</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -39,18 +38,18 @@
             <div class="card-body">
                 <form method="POST" action="{{ $url_form}}">
                 @csrf
-                {!! (isset($mhs))? method_field('PUT') : '' !!}
+                {!! (isset($mahasiswa))? method_field('PUT') : '' !!}
 
                 <div class="form-group">
                     <label>Nim</label>
-                    <input class="form-control @error('nim') is-invalid @enderror" value="{{isset($mhs)? $mhs->nim : old('nim') }}" name="nim" type="text" />
+                    <input class="form-control @error('nim') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->nim : old('nim') }}" name="nim" type="text" />
                     @error('nim')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Nama</label>
-                    <input class="form-control @error('nama') is-invalid @enderror" value="{{isset($mhs)? $mhs->nama : old('nama') }}" name="nama" type="text" />
+                    <input class="form-control @error('nama') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->nama : old('nama') }}" name="nama" type="text" />
                     @error('name')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
@@ -59,45 +58,46 @@
                     <label for="Kelas">Kelas</label>
                     <select class="form-control" name="kelas_id">
                         @foreach($kelas as $kls)
-                        <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
+                        <option value="{{$kls->id}}" {{ $mahasiswa->kelas_id == $kls->id ? 'selected' : ''}}>{{$kls->nama_kelas}}</option>
                         @endforeach
                     </select>
-                </div>
+                </div>
                 <div class="form-group">
                     <label>Jenis Kelamin</label><br>
-                    <label><input type="radio" name="jk" value="l" {{isset($mhs) && $mhs->jk == "l" ? "checked" : ""}}>Laki-laki</label><br>
-                    <label><input type="radio" name="jk" value="p" {{isset($mhs) && $mhs->jk == "p" ? "checked" : ""}}>Perempuan</label><br>
+                    <label><input type="radio" name="jk" value="l" {{isset($mahasiswa) && $mahasiswa->jk == "l" ? "checked" : ""}}>Laki-laki</label><br>
+                    <label><input type="radio" name="jk" value="p" {{isset($mahasiswa) && $mahasiswa->jk == "p" ? "checked" : ""}}>Perempuan</label><br>
                      @error('jk')
                         <span class="error invalid-feedback">{{ $message}} </span>
                     @enderror
                     <div class="form-group">
                         <label>Tempat Lahir</label>
-                        <input class="form-control @error('tempat_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tempat_lahir : old('tempat_lahir') }}" name="tempat_lahir" type="text" />
+                        <input class="form-control @error('tempat_lahir') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->tempat_lahir : old('tempat_lahir') }}" name="tempat_lahir" type="text" />
                         @error('tempat_lahir')
                             <span class="error invalid-feedback">{{ $message}} </span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tanggal_lahir: old('tanggal_lahir') }}" name="tanggal_lahir" type="text" />
+                        <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->tanggal_lahir: old('tanggal_lahir') }}" name="tanggal_lahir" type="text" />
                         @error('tanggal_lahir')
                             <span class="error invalid-feedback">{{ $message}} </span>
                         @enderror
                 </div>
             <div class="form-group">
                 <label>Alamat</label>
-                <input class="form-control @error('alamat') is-invalid @enderror" value="{{isset($mhs)? $mhs->alamat : old('alamat') }}" name="alamat" type="text" />
+                <input class="form-control @error('alamat') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->alamat : old('alamat') }}" name="alamat" type="text" />
                 @error('alamat')
                     <span class="error invalid-feedback">{{ $message}} </span>
                  @enderror
             </div>
             <div class="form-group">
             <label>HP</label>
-            <input class="form-control @error('hp') is-invalid @enderror" value="{{isset($mhs)? $mhs->hp : old('hp') }}" name="hp" type="text" />
+            <input class="form-control @error('hp') is-invalid @enderror" value="{{isset($mahasiswa)? $mahasiswa->hp : old('hp') }}" name="hp" type="text" />
                 @error('hp')
             <span class="error invalid-feedback">{{ $message}} </span>
             @enderror
             </div>
+
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
 
