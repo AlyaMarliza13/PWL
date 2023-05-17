@@ -73,6 +73,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/articles')}}" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Artikel
+                        </p>
+                    </a>
+                <li class="nav-item">
                     <a href="{{ url('/pengalamankuliah')}}" class="nav-link">
                         <i class="nav-icon fas fa-pen-fancy"></i>
                         <p>

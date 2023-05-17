@@ -10,6 +10,7 @@ use App\Http\Controllers\HobbiesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilController;
@@ -75,4 +76,6 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/families', FamiliesController::class);
     Route::resource('/courses', CoursesController::class);
     Route::resource('/mahasiswa', MahasiswaController::class);
+    Route::resource('/articles', ArticleController::class);
+    Route::get('/articles/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
 });
