@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\PDF;
 
 class MahasiswaController extends Controller
 {
@@ -45,6 +46,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|string|max:10|unique:mahasiswa,nim',
             'nama' => 'required|string|max:50',
+            'foto' => 'required|image|mimes:jpeg,png,jpg',
             'jk' => 'required|in:l,p',
             'tempat_lahir' => 'required|string|max:50',
             'tanggal_lahir' => 'required|date',
@@ -52,6 +54,23 @@ class MahasiswaController extends Controller
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
         ]);
+
+        $image_name = '';
+        if ($request->file('image')){
+            $image_name = $request->file('image')->store('images', 'public');
+        }
+
+        Mahasiswa::create([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'foto' => $image_name,
+            'jk' => $request->jk,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'hp' => $request->hp,
+        ]);
+        return 'Data berhasil disimpan';
 
        $mahasiswa = new MahasiswaModel();
        $mahasiswa->nim = $request->get('nim');
@@ -103,6 +122,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|string|max:10|unique:mahasiswa,nim,'.$id,
             'nama' => 'required|string|max:50',
+            'foto' => 'required|image|mimes:jpeg,png,jpg',
             'jk' => 'required|in:l,p',
             'tempat_lahir' => 'required|string|max:50',
             'tanggal_lahir' => 'required|date',
@@ -110,6 +130,22 @@ class MahasiswaController extends Controller
             'hp' => 'required|digits_between:6,15',
         ]);
 
+        $image_name = '';
+        if ($request->file('image')){
+            $image_name = $request->file('image')->store('images', 'public');
+        }
+
+        Mahasiswa::create([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'foto' => $image_name,
+            'jk' => $request->jk,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'hp' => $request->hp,
+        ]);
+        return 'Data berhasil disimpan';
 
         $mahasiswa = MahasiswaModel::with('kelas')->where('id', $id)->first();
         $mahasiswa->nim = $request->get('nim');
@@ -137,5 +173,11 @@ class MahasiswaController extends Controller
         MahasiswaModel::where('id', '=', $id)->delete();
         return redirect('mahasiswa')
         ->with('success', 'Mahasiswa Berhasil dihapus');
+    }
+    public function cetak_pdf()
+    {
+        $article = Mahasiswa::all();
+        $pdf = PDF::loadView('article.article_pdf', ['article' => $article]);
+        return $pdf->stream();
     }
 }

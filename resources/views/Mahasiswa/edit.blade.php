@@ -55,6 +55,10 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="image">Foto</label>
+                        <input type="file" class="form-control" required="required" name="image" value="{{$mahasiswa->foto}}">
+                            <img width="150px" src="{{asset('storage/'.$mahasiswa->featured_image)}}">
+                <div class="form-group">
                     <label for="Kelas">Kelas</label>
                     <select class="form-control" name="kelas_id">
                         @foreach($kelas as $kls)

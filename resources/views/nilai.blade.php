@@ -1,35 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Kartu Hasil Studi </title>
-</head>
-<body>
-    <div class="container mt-3">
-        <h3 class="text-center mb-5">Politeknik Negeri Malang</h3>
-        <h1 class="text-center mb-5">Kartu Hasil Studi (KHS)</h1>
-        <h6><b>Nama: </b>{{ $mahasiswa->nama }}</h6>
-        <h6><b>Nim: </b>{{ $mahasiswa->nim }}</h6>
-        <h6><b>Kelas: </b>{{ $mahasiswa->kelas->nama_kelas }}</h6>
-        <table class="table mt-5">
-            <thead>
-                <td><b>Nama Mata Kuliah</b></td>
-                <td><b>SKS</b></td>
-                <td><b>Semester</b></td>
-                <td><b>Nilai</b></td>
-            </thead>
-            @foreach($mahasiswa->$matakuliah as $matakuliah)
+@extends('layouts.templates')
+@section('content')
+<section class="content">
+
+    <!--Default box-->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">NILAI MATA KULIAH</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widge="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widge="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Nim : </b>{{ $m->nim }}</li>
+                <li class="list-group-item"><b>Nama : </b>{{$m->nama}}</li>
+                <li class="list-group-item"><b>Kelas : </b>{{$m->kelas->nama_kelas}}</li>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama matkul</th>
+                            <th>SKS</th>
+                            <th>Semester</th>
+                            <th>Nilai</th>
+
+                        </tr>
+                    </thead>
+                    </tbody>
+
+                    @if($matkul->count()>0)
+              @foreach($matkul as $row)
+              <tr>
+                <td>{{$row->matakuliah->id}}</td>
+                <td>{{$row->matakuliah->nama_matkul}}</td>
+                <td>{{$row->matakuliah->sks}}</td>
+                <td>{{$row->matakuliah->jam}}</td>
+                <td>{{$row->matakuliah->semester}}</td>
+                <td>{{$row->nilai}}</td>
+
+
+              </tr>
+              @endforeach
+            @else
             <tr>
-                <td>{{ $matakuliah->nama_matkul }}</td>
-                <td>{{ $matakuliah->sks }}</td>
-                <td>{{ $matakuliah->semester }}</td>
-                <td>{{ $matakuliah->pivot->nilai }}</td>
+              <td colspan="6" class="text-center">Data tidak ada</td>
             </tr>
-            @endforeach
-        </table>
-        <a href="/mahasiswa" class="btn btn-success">Kembali</a>
+            @endif
+                </table>
+                <a href="{{ url('/mahasiswa/cetak_pdf/' . $Mahasiswa->id) }}" class="btn btn-primary">Cetak KRS</a>
+            </ul>
+        </div>
     </div>
-</html>
+
+    <!-- /.card -->
+
+    </section>
+@endsection
