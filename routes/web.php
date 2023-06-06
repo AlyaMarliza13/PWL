@@ -79,4 +79,5 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/articles', ArticleController::class);
     Route::get('/articles/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
     Route::get('/mahasiswa/cetak_pdf', [MahasiswaController::class, 'cetak_pdf']);
+    Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
 });
